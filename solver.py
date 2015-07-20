@@ -2,8 +2,21 @@ __author__ = "Tom Sherman"
 __version__ = "1.0"
 
 """
-    This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid matched of letters inputted to words.
+    This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid
+    matched of letters inputted to words.
 """
+import hashdict
+
+
+def main():
+    letters = getletters()
+    dmap = hashdict.readjson("map.json")
+
+    matches = getmatches(dmap, letters)
+
+    print("Found {0} matches ".format(len(matches)))
+    for match in matches:
+        print(match)
 
 
 def getwords():
@@ -47,4 +60,14 @@ def getletters():
     return letters
 
 
+def getmatches(dmap, letters):
+    """
+        Actually finds the matches.
 
+    :param dmap:
+    :param letters:
+    :return matches:
+    """
+    matches = []
+
+    return matches
