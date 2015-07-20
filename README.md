@@ -8,9 +8,10 @@ Probably need to use a better one (see todo)
 
 ## Todo
 
-* Basic functionality ie. matching available letters to dictionary words
-* Read letters from game input
+* Basic functionality ie. matching available letters to dictionary words.
+* Read letters from game input.
 * Weight letters so that ones with less moves remaining, worth more points etc. are preferred by the matching algorithm.
+* Grab better dictionary, preferably the one used in the actual game.
 
 ## References
 
