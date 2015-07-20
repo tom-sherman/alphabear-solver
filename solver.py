@@ -1,21 +1,14 @@
 __author__ = "Tom Sherman"
-__version__ = "0.1"
+__version__ = "1.0"
 
-
-def main():
-    words = getwords()
-    letters = getletters()
-
-    matches = getmatches(words, letters)
-
-    print("Here are your matching words: ")
-    for match in matches:
-        print(match)
+"""
+    This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid matched of letters inputted to words.
+"""
 
 
 def getwords():
     """
-        Reads, line by line, each word in dictionary.txt and stores them in a list.
+        Stores words from dictionary.txt in a dict with keys of letters (sorted alphabetically) and values of a list
     :return words:
     """
 
@@ -47,29 +40,11 @@ def getletters():
 
     # Print letters so user can check the inputs
     print("\nYour letters are")
-    for c in letters:
-        print(c, end=" ")
+    for L in letters:
+        print(L, end=" ")
     print()
 
     return letters
 
 
-def getmatches(words, letters):
-    """
-        Takes two string lists as parameters, words and letters.
 
-        Returns a list of matches. A match is a word in 'words' that contains
-        some letters in 'letters'. Each letter can be used 0 or 1 times.
-
-
-    :param words:
-    :param letters:
-    :return matches:
-    """
-
-    matches = []
-
-    return matches
-
-
-main()
