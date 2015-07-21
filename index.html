@@ -27,10 +27,7 @@
 
 <p>Can also be used as a <a href="https://en.wikipedia.org/wiki/Countdown_(game_show)#Letters_round">Countdown</a> with an arbitrary number of letters, not just 8 like in the game show.</p>
 
-<p>Uses a dictionary, located in <code>dictionary.txt</code>, which is simply an ordered list of "all" English words.
-Probably need to use a better one (see todo). However, this script uses a dictionary where the key's are
-word signatures and the values are the words those signatures can make. <code>hashdict.py</code> can generate this
-json dict for you from an ordered, one word per line dictionary</p>
+<p>Uses a dictionary, generated to <code>map.json</code>, from <code>dictionary.txt</code>. It's the "official" <a href="https://en.wikipedia.org/wiki/SOWPODS">SOWPODS</a> dictionary.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -60,7 +57,7 @@ json dict for you from an ordered, one word per line dictionary</p>
 <a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
 
 <ul>
-<li>Dictionary (<code>dictionary.txt</code>) is taken from here: <a href="http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt">http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt</a>
+<li>Dictionary (<code>dictionary.txt</code>) is taken from here: <a href="https://code.google.com/p/scrabblehelper/source/browse/trunk/ScrabbleHelper/src/dictionaries/sowpods.txt?r=20">https://code.google.com/p/scrabblehelper/source/browse/trunk/ScrabbleHelper/src/dictionaries/sowpods.txt?r=20</a>
 </li>
 <li>
 <a href="http://www.cs.cmu.edu/afs/cs/academic/class/15451-s06/www/lectures/scrabble.pdf">The World's Fastest Scrabble Program</a> - 
