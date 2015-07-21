@@ -11,6 +11,8 @@ Uses a dictionary, generated to `map.json`, from `dictionary.txt`. It's the "off
 
 To use this script, you'll need Python 3 installed.
 
+To read letters from game screenshots you need [Pillow](https://pypi.python.org/pypi/Pillow/2.2.1) and [pytesseract](https://pypi.python.org/pypi/pytesseract/0.1) installed.
+
 1. Make sure you have a tone of words in `dictionary.txt`, one word per line. A wordlist is included here but you can modify it if you want.
 2. Run `hashdict.py`
 3. Run `solver.py`
@@ -22,6 +24,15 @@ Everytime you change/update the dictionary, you'll need to rerun `hashdict.py`
 * Read letters from game input.
 * Weight letters so that ones with less moves remaining, worth more points etc. are preferred by the matching algorithm.
 * Grab better dictionary, preferably the one used in the actual game.
+
+## Dependencies
+
+* Python 3
+
+For reading images
+
+* PyOCR
+* Pillow
 
 ### References
 
