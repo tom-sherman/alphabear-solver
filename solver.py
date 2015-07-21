@@ -6,37 +6,23 @@ __version__ = "1.0"
     matched of letters inputted to words.
 """
 import hashdict
+import itertools
+from collections import defaultdict
 
 
 def main():
-    letters = getletters()
+    dmap = defaultdict(list)
     dmap = hashdict.readjson("map.json")
 
-    matches = getmatches(dmap, letters)
+    letters = getletters()
 
-    print("Found {0} matches ".format(len(matches)))
-    for match in matches:
-        print(match)
-
-
-def getwords():
-    """
-        Stores words from dictionary.txt in a dict with keys of letters (sorted alphabetically) and values of a list
-    :return words:
-    """
-
-    print("Getting words from file...")
-    print()
-
-    with open("dictionary.txt") as f:
-        words = f.read().splitlines()
-
-    return words
+    printmatches(dmap, letters)
 
 
 def getletters():
     """
-        Get letters to be used. Character '0' signals that the input of letters has ended.
+        Returns a sanitised, sorted list of letters. Character '0' signals that the input of letters
+        has ended.
 
         Also prints the inputted letters so user can check the inputs.
 
@@ -45,11 +31,12 @@ def getletters():
 
     letters = []
 
-    letter = input("Input letters (key 0 to signal end of inputs: ")
+    s = input("Input letters (no spaces): ")
 
-    while letter != "0":
+    s = sorted(s)   # Sorts letters alphabetically
+
+    for letter in s:
         letters.append(letter)
-        letter = input("Input letter: ")
 
     # Print letters so user can check the inputs
     print("\nYour letters are")
@@ -60,14 +47,36 @@ def getletters():
     return letters
 
 
-def getmatches(dmap, letters):
+def printmatches(dmap, letters):
     """
-        Actually finds the matches.
+        Actually finds and prints the matches.
+
 
     :param dmap:
     :param letters:
-    :return matches:
     """
-    matches = []
+    
+    for i in range(1, len(letters)):
+        k = list(itertools.combinations(range(0, len(letters)), i))  # Generates all sets k
 
-    return matches
+        for kSet in k:
+            signature = ""
+            for pointer in kSet:
+                signature = signature + letters[pointer]
+
+            try:
+                print(dmap[signature])
+            except KeyError:
+                pass
+
+    signature = ""
+    for letter in letters:  # Finally check if raw letters are a valid signature
+        signature += letter
+    try:
+        print(dmap[signature])
+    except KeyError:
+        pass
+
+
+
+main()

@@ -10,13 +10,12 @@ json dict for you from an ordered, one word per line dictionary
 
 ## Todo
 
-* Basic functionality ie. matching available letters to dictionary words.
 * Read letters from game input.
 * Weight letters so that ones with less moves remaining, worth more points etc. are preferred by the matching algorithm.
 * Grab better dictionary, preferably the one used in the actual game.
 
 ## References
 
-* Dictionary (`dictionary.txt`) is taken from here: http://www.math.sjsu.edu/~foster/dictionary.txt
+* Dictionary (`dictionary.txt`) is taken from here: http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt
 * [The World's Fastest Scrabble Program](http://www.cs.cmu.edu/afs/cs/academic/class/15451-s06/www/lectures/scrabble.pdf) - 
 Andrew W. Appel & Guy J. Jacobson (1988)

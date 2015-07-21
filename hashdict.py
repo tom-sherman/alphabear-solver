@@ -8,12 +8,20 @@ __version__ = "1.0"
     It's quite slow, but once completed lookup of valid matches is blazing fast.
 """
 
-import collections
+from collections import defaultdict
 import json
 
 
 dictFileName = "dictionary.txt"
 mapFileName = "map.json"
+
+
+def main():
+    dictmap = createdict(dictFileName)
+    storejson(dictmap)
+    print("JSON file generated from " + dictFileName)
+    d = readjson(mapFileName)
+    print(d)
 
 
 def createdict(filename):
@@ -29,15 +37,13 @@ def createdict(filename):
     """
     # the "signature" of a word is the ordered list of its letters
 
-    dictfile = open(filename)                      # open the wordlist
-    dmap = collections.defaultdict(list)       # associate to each signature the words that have that signature
-    signatures = []                         # store here all the signatures to count them
+    dictfile = open(filename)   # open the wordlist
+    dmap = defaultdict(list)    # associate to each signature the words that have that signature
 
-    for x in dictfile.readlines():
-        signature = "".join(sorted(x.strip()))  # get the word signature
+    for word in dictfile.readlines():
+        signature = "".join(sorted(word.strip()))  # get the word signature
+        dmap[signature].append(word.strip())
 
-        signatures.append(signature)
-        dmap[signature].append(x.strip())
     dictfile.close()
 
     return dmap
@@ -62,11 +68,14 @@ def readjson(filename):
     :param filename:
     :return json dict:
     """
+
+    data = defaultdict(list)
     with open(filename) as f:
-        return json.loads(f.read())
+
+        data = json.loads(f.read())
+
+    return data
 
 
 if __name__ == '__main__':
-    dictmap = createdict(dictFileName)
-    storejson(dictmap)
-    print("JSON file generated from " + dictFileName)
+    main()
