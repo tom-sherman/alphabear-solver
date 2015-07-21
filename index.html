@@ -22,13 +22,30 @@
       <h1>
 <a id="alphabear-solver" class="anchor" href="#alphabear-solver" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alphabear Solver</h1>
 
-<p>A simple python(3) script that is intended to be used to solve game boards on the mobile game 
+<p>A simple python script that is intended to be used to solve game boards on the mobile game 
 <a href="https://play.google.com/store/apps/details?id=com.spryfox.alphabear&amp;hl=en">Alphabear</a> by Spry Fox.</p>
+
+<p>Can also be used as a <a href="https://en.wikipedia.org/wiki/Countdown_(game_show)#Letters_round">Countdown</a> with an arbitrary number of letters, not just 8 like in the game show.</p>
 
 <p>Uses a dictionary, located in <code>dictionary.txt</code>, which is simply an ordered list of "all" English words.
 Probably need to use a better one (see todo). However, this script uses a dictionary where the key's are
 word signatures and the values are the words those signatures can make. <code>hashdict.py</code> can generate this
 json dict for you from an ordered, one word per line dictionary</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To use this script, you'll need Python 3 installed.</p>
+
+<ol>
+<li>Make sure you have a tone of words in <code>dictionary.txt</code>, one word per line. A wordlist is included here but you can modify it if you want.</li>
+<li>Run <code>hashdict.py</code>
+</li>
+<li>Run <code>solver.py</code>
+</li>
+</ol>
+
+<p>Everytime you change/update the dictionary, you'll need to rerun <code>hashdict.py</code></p>
 
 <h2>
 <a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo</h2>
@@ -39,8 +56,8 @@ json dict for you from an ordered, one word per line dictionary</p>
 <li>Grab better dictionary, preferably the one used in the actual game.</li>
 </ul>
 
-<h2>
-<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h2>
+<h3>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h3>
 
 <ul>
 <li>Dictionary (<code>dictionary.txt</code>) is taken from here: <a href="http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt">http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt</a>
