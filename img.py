@@ -14,9 +14,8 @@ from tkinter import filedialog
 
 
 def main():
-    #img = loadimg()
+    img = loadimg
 
-    image_to_string(Image.open("download.jpg"))
 
 def loadimg():
     """
@@ -32,10 +31,6 @@ def loadimg():
         return Image.open(path)
     except (FileNotFoundError, OSError) as e:
         print(e)
-
-
-
-
 
 
 def readletters(img):

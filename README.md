@@ -32,6 +32,12 @@ Everytime you change/update the dictionary, you'll need to rerun `hashdict.py`
 For reading images
 
 * PyOCR
+* Install an OCR:
+  * tesseract-ocr from http://code.google.com/p/tesseract-ocr/
+    ('tesseract-ocr' + 'tesseract-ocr-&lt;lang&gt;' in Debian).
+    You must be able to invoke the tesseract command as "tesseract".
+    Python-tesseract is tested with Tesseract >= 3.01 only.
+  * or cuneiform
 * Pillow
 
 ### References
