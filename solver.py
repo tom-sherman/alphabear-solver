@@ -1,5 +1,5 @@
 __author__ = "Tom Sherman"
-__version__ = "1.0"
+__version__ = "1.1"
 
 """
     This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid
@@ -15,8 +15,8 @@ def main():
     dmap = hashdict.readjson("map.json")
 
     letters = getletters()
-
-    printmatches(dmap, letters)
+    signatures = getsignatures(letters)
+    printmatches(dmap, signatures)
 
 
 def getletters():
@@ -47,15 +47,33 @@ def getletters():
     return letters
 
 
-def printmatches(dmap, letters):
+def printmatches(dmap, signatures):
     """
         Actually finds and prints the matches.
 
 
     :param dmap:
-    :param letters:
+    :param signatures:
     """
-    
+
+    for signature in signatures:
+        try:
+            print(dmap[signature])
+        except KeyError:
+            pass
+
+
+def getsignatures(letters):
+    """
+        Generates all possible unique combination of the list of letters
+        provided.
+
+    :param letters:
+    :return signatures:
+    """
+
+    signatures = []
+
     for i in range(1, len(letters)):
         k = list(itertools.combinations(range(0, len(letters)), i))  # Generates all sets k
 
@@ -64,21 +82,37 @@ def printmatches(dmap, letters):
             for pointer in kSet:
                 signature = signature + letters[pointer]
 
-            try:
-                signature = "".join(sorted(signature))
-                print(dmap[signature])
-            except KeyError:
-                pass
+            signature = "".join(sorted(signature))
+            signatures.append(signature)
 
+    # Finally check if raw letters are a valid signature
     signature = ""
-    for letter in letters:  # Finally check if raw letters are a valid signature
+    for letter in letters:  #
         signature += letter
-    try:
-        signature = "".join(sorted(signature))
-        print(dmap[signature])
-    except KeyError:
-        pass
+    signature = "".join(sorted(signature))
+    signatures.append(signature)
 
+    #print(signatures)
+    return removedupes(signatures)
+
+
+def removedupes(lst):
+    """
+        Removes all duplicates from a list
+
+    :param lst:
+    :return unique_list:
+    """
+
+    output = []
+    seen = set()
+    for value in lst:
+        # If value has not been encountered yet,
+        # ... add it to both list and set.
+        if value not in seen:
+            output.append(value)
+            seen.add(value)
+    return output
 
 
 main()
