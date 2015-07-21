@@ -3,6 +3,8 @@
 A simple python script that is intended to be used to solve game boards on the mobile game 
 [Alphabear](https://play.google.com/store/apps/details?id=com.spryfox.alphabear&hl=en) by Spry Fox.
 
+Can also be used as a [Countdown](https://en.wikipedia.org/wiki/Countdown_(game_show)#Letters_round) with an arbitrary number of letters, not just 8 like in the game show.
+
 Uses a dictionary, located in `dictionary.txt`, which is simply an ordered list of "all" English words.
 Probably need to use a better one (see todo). However, this script uses a dictionary where the key's are
 word signatures and the values are the words those signatures can make. `hashdict.py` can generate this
