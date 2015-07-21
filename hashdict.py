@@ -1,5 +1,5 @@
 __author__ = "Tom Sherman"
-__version__ = "1.0"
+__version__ = "1.1"
 
 """
     This script reads from a file (dictionary.txt), generates a hashmap (dict) and dumps it to a json file.
@@ -41,6 +41,7 @@ def createdict(filename):
     dmap = defaultdict(list)    # associate to each signature the words that have that signature
 
     for word in dictfile.readlines():
+        word = word.lower()
         signature = "".join(sorted(word.strip()))  # get the word signature
         dmap[signature].append(word.strip())
 
