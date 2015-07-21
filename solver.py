@@ -65,6 +65,7 @@ def printmatches(dmap, letters):
                 signature = signature + letters[pointer]
 
             try:
+                signature = "".join(sorted(signature))
                 print(dmap[signature])
             except KeyError:
                 pass
@@ -73,6 +74,7 @@ def printmatches(dmap, letters):
     for letter in letters:  # Finally check if raw letters are a valid signature
         signature += letter
     try:
+        signature = "".join(sorted(signature))
         print(dmap[signature])
     except KeyError:
         pass
