@@ -1,5 +1,4 @@
 __author__ = "Tom Sherman"
-__version__ = "1.1"
 
 """
     This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid
@@ -11,12 +10,22 @@ from collections import defaultdict
 
 
 def main():
-    dmap = defaultdict(list)
     dmap = hashdict.readjson("map.json")
 
-    letters = getletters()
-    signatures = getsignatures(letters)
-    printmatches(dmap, signatures)
+    # Loops until user enters the character "0"
+    while True:
+        letters = getletters()
+        if "0" in letters:
+            break
+        else:
+            # Print letters so user can check the inputs
+            print("\nYour letters are")
+            for L in letters:
+                print(L, end=" ")
+            print()
+
+            signatures = getsignatures(letters)
+            printmatches(dmap, signatures)
 
 
 def getletters():
@@ -24,25 +33,16 @@ def getletters():
         Returns a sanitised, sorted list of letters. Character '0' signals that the input of letters
         has ended.
 
-        Also prints the inputted letters so user can check the inputs.
-
     :return letters:
     """
 
     letters = []
 
     s = input("Input letters (no spaces): ")
-
     s = sorted(s)   # Sorts letters alphabetically
 
     for letter in s:
         letters.append(letter)
-
-    # Print letters so user can check the inputs
-    print("\nYour letters are")
-    for L in letters:
-        print(L, end=" ")
-    print()
 
     return letters
 
