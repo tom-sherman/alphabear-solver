@@ -1,5 +1,4 @@
 __author__ = "Tom Sherman"
-__version__ = "1.1"
 
 """
     This script reads from a file (dictionary.txt), generates a hashmap (dict) and dumps it to a json file.
@@ -70,7 +69,6 @@ def readjson(filename):
     :return json dict:
     """
 
-    data = defaultdict(list)
     with open(filename) as f:
 
         data = json.loads(f.read())
