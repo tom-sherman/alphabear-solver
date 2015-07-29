@@ -45,3 +45,4 @@ Temporary Items
 *.pyc
 *.pyc
 *.jpg
+build.py
