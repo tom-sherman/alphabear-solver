@@ -43,6 +43,9 @@ Temporary Items
 .apdisk
 *.json
 *.pyc
+<<<<<<< HEAD
 *.pyc
+=======
+>>>>>>> origin/master
 *.jpg
 build.py

@@ -1,30 +1,36 @@
 __author__ = "Tom Sherman"
-__version__ = "1.1"
 
 """
-    This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid
-    matched of letters inputted to words.
+    This script uses the hashmap (dict) generated in hashdict.py and uses it to
+    find all valid matched of letters inputted to words.
+
 """
 import hashdict
 import itertools
-from collections import defaultdict
 
 
 def main():
-    dmap = defaultdict(list)
     dmap = hashdict.readjson("map.json")
 
-    letters = getletters()
-    signatures = getsignatures(letters)
-    printmatches(dmap, signatures)
+    # Loops until user enters the character "0"
+    while True:
+        letters = getletters()
+        if "0" in letters:
+            break
+        else:
+            # Print letters so user can check the inputs
+            print("\nYour letters are")
+            for L in letters:
+                print(L, end=" ")
+            print()
+
+            signatures = getsignatures(letters)
+            printmatches(dmap, signatures)
 
 
 def getletters():
     """
-        Returns a sanitised, sorted list of letters. Character '0' signals that the input of letters
-        has ended.
-
-        Also prints the inputted letters so user can check the inputs.
+        Returns a sanitised, sorted list of letters.
 
     :return letters:
     """
@@ -33,16 +39,8 @@ def getletters():
 
     s = input("Input letters (no spaces): ")
 
-    s = sorted(s)   # Sorts letters alphabetically
-
-    for letter in s:
+    for letter in sorted(s):
         letters.append(letter)
-
-    # Print letters so user can check the inputs
-    print("\nYour letters are")
-    for L in letters:
-        print(L, end=" ")
-    print()
 
     return letters
 
@@ -56,9 +54,20 @@ def printmatches(dmap, signatures):
     :param signatures:
     """
 
+    print()
+    print("Length | Words")
+    print("--------------")
+
     for signature in signatures:
         try:
-            print(dmap[signature])
+            matches = dmap[signature]
+
+            print("{0:6} | ".format(len(matches[0])), end="")
+
+            for match in matches:
+                print(match, end=" ")
+            print()
+
         except KeyError:
             pass
 
@@ -75,7 +84,9 @@ def getsignatures(letters):
     signatures = []
 
     for i in range(1, len(letters)):
-        k = list(itertools.combinations(range(0, len(letters)), i))  # Generates all sets k
+
+        # Generates all sets k
+        k = list(itertools.combinations(range(0, len(letters)), i))
 
         for kSet in k:
             signature = ""
@@ -116,4 +127,8 @@ def removedupes(lst):
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     main()
+=======
+    main()
+>>>>>>> origin/master

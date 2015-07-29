@@ -1,11 +1,12 @@
 __author__ = "Tom Sherman"
-__version__ = "1.1"
 
 """
-    This script reads from a file (dictionary.txt), generates a hashmap (dict) and dumps it to a json file.
-    Only needs to be run once, unless the dictionary changes.
+    This script reads from a file (dictionary.txt), generates a hashmap (dict)
+    and dumps it to a json file. Only needs to be run once, unless the
+    dictionary changes.
 
-    It's quite slow, but once completed lookup of valid matches is blazing fast.
+    It's quite slow, but once completed lookup of valid matches is blazing
+    fast.
 """
 
 from collections import defaultdict
@@ -26,19 +27,22 @@ def main():
 
 def createdict(filename):
     """
-        Reads a txt file of words, one word per line, and stores that in a map (dict).
+        Reads a txt file of words, one word per line, and stores that in a map
+        (dict).
 
-        Keys are unique signatures of one or more words - an ordered list of letters
-        that can make up each word in the dictionary. The values are the words the
-        signature can make.
+        Keys are unique signatures of one or more words - an ordered list of
+        letters that can make up each word in the dictionary. The values are
+        the words the signature can make.
 
     :return dmap:
     :param filename: A text file, one word per line
     """
     # the "signature" of a word is the ordered list of its letters
 
-    dictfile = open(filename)   # open the wordlist
-    dmap = defaultdict(list)    # associate to each signature the words that have that signature
+    # open the wordlist
+    dictfile = open(filename)
+    # associate to each signature the words that have that signature
+    dmap = defaultdict(list)
 
     for word in dictfile.readlines():
         word = word.lower()
@@ -70,7 +74,6 @@ def readjson(filename):
     :return json dict:
     """
 
-    data = defaultdict(list)
     with open(filename) as f:
 
         data = json.loads(f.read())
