@@ -1,12 +1,12 @@
 __author__ = "Tom Sherman"
 
 """
-    This script uses the hashmap (dict) generated in hashdict.py and uses it to find all valid
-    matched of letters inputted to words.
+    This script uses the hashmap (dict) generated in hashdict.py and uses it to
+    find all valid matched of letters inputted to words.
+
 """
 import hashdict
 import itertools
-from collections import defaultdict
 
 
 def main():
@@ -30,8 +30,7 @@ def main():
 
 def getletters():
     """
-        Returns a sanitised, sorted list of letters. Character '0' signals that the input of letters
-        has ended.
+        Returns a sanitised, sorted list of letters.
 
     :return letters:
     """
@@ -39,9 +38,8 @@ def getletters():
     letters = []
 
     s = input("Input letters (no spaces): ")
-    s = sorted(s)   # Sorts letters alphabetically
 
-    for letter in s:
+    for letter in sorted(s):
         letters.append(letter)
 
     return letters
@@ -56,9 +54,20 @@ def printmatches(dmap, signatures):
     :param signatures:
     """
 
+    print()
+    print("Length | Words")
+    print("--------------")
+
     for signature in signatures:
         try:
-            print(dmap[signature])
+            matches = dmap[signature]
+
+            print("{0:6} | ".format(len(matches[0])), end="")
+
+            for match in matches:
+                print(match, end=" ")
+            print()
+
         except KeyError:
             pass
 
@@ -75,7 +84,9 @@ def getsignatures(letters):
     signatures = []
 
     for i in range(1, len(letters)):
-        k = list(itertools.combinations(range(0, len(letters)), i))  # Generates all sets k
+
+        # Generates all sets k
+        k = list(itertools.combinations(range(0, len(letters)), i))
 
         for kSet in k:
             signature = ""
