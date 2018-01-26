@@ -1,3 +1,9 @@
+import hashdict
+import itertools
+import re
+from collections import defaultdict
+import copy
+
 __author__ = "Tom Sherman"
 
 """
@@ -5,11 +11,6 @@ __author__ = "Tom Sherman"
     find all valid matched of letters inputted to words.
 
 """
-import hashdict
-import itertools
-import re
-from collections import defaultdict
-import copy
 
 
 def main():
@@ -26,7 +27,7 @@ def main():
 
     # Loops until user enters the character "0"
     while True:
-        letters = getletters(turns)
+        letters = get_letters(turns)
 
         if "0" in letters:
             break
@@ -39,14 +40,14 @@ def main():
             print()
 
             if turns:
-                parseturnes(letters, dmap)
+                parse_turns(letters, dmap)
             else:
-                signatures = getsignatures(letters)
-                matches = getmatches(dmap, signatures)
-                printmatches(matches)
+                signatures = get_signatures(letters)
+                matches = get_matches(dmap, signatures)
+                print_matches(matches)
 
 
-def getletters(turns=False):
+def get_letters(turns=False):
     """
         Returns a sanitised, sorted list of letters.
 
@@ -61,7 +62,7 @@ def getletters(turns=False):
         arg = input("Input letters: ")
 
         letterssorted = []
-        if validsyntax(arg):
+        if valid_syntax(arg):
             # Gets a list of letter groups
             lettergroups = arg.split(";")
             # Each letter group is sorted
@@ -85,7 +86,7 @@ def getletters(turns=False):
         return letters
 
 
-def getmatches(dmap, signatures):
+def get_matches(dmap, signatures):
     """
 
     :param dmap:
@@ -104,7 +105,7 @@ def getmatches(dmap, signatures):
     return matches
 
 
-def printmatches(matches):
+def print_matches(matches):
     """
     :param matches:
     """
@@ -117,7 +118,7 @@ def printmatches(matches):
         print("{0:6} | {1}".format(len(match), match))
 
 
-def getsignatures(letters):
+def get_signatures(letters):
     """
         Generates all possible unique combination of the list of letters
         provided.
@@ -148,10 +149,10 @@ def getsignatures(letters):
     signature = "".join(sorted(signature))
     signatures.append(signature)
 
-    return removedupes(signatures)
+    return remove_dupes(signatures)
 
 
-def removedupes(lst):
+def remove_dupes(lst):
     """
         Returns all duplicates from a list
 
@@ -170,7 +171,7 @@ def removedupes(lst):
     return output
 
 
-def validsyntax(arg):
+def valid_syntax(arg):
     """
         Validates syntax used in parseturns.
 
@@ -186,30 +187,31 @@ def validsyntax(arg):
         return True
 
 
-def parseturnes(lsletters, dmap):
+def parse_turns(lsletters, dmap):
     """
         Used when you want to use the 'turns' syntax.
 
-        Prints the top 3 words to play, calculates using getscore.
+        Prints the top 3 words to play, calculates using get_score.
 
     :param lsletters:
+    :param dmap:
     """
     letters = []
-    turnmap = getturnmap(lsletters)
+    turnmap = get_turnmap(lsletters)
 
     for ls in lsletters:
         for l in ls:
             letters.append(l)
 
     letters = sorted(letters)
-    signatures = getsignatures(letters)
+    signatures = get_signatures(letters)
 
-    matches = getmatches(dmap, signatures)
-    printmatches(matches)
+    matches = get_matches(dmap, signatures)
+    print_matches(matches)
 
     scoredict = defaultdict(list)
     for match in matches:
-        score = getscore(turnmap, match)
+        score = get_score(turnmap, match)
 
         scoredict[score].append(match)
 
@@ -223,7 +225,7 @@ def parseturnes(lsletters, dmap):
         counter += 1
 
 
-def getturnmap(lsletters):
+def get_turnmap(lsletters):
     """
         Returns a map with the score as the key, and the words with that score
         as the corresponding values.
@@ -243,7 +245,7 @@ def getturnmap(lsletters):
     return turnmap
 
 
-def getscore(turnmap, match):
+def get_score(turnmap, match):
     """
         Gets the score of each word.
         This isn't the actual game score, just a number used to rank the words.
