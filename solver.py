@@ -219,7 +219,7 @@ def parseturnes(lsletters, dmap):
     for score in reversed(sorted(scoredict)):
         if counter == 3:
             break
-        print("{0}. {1}".format(counter, scoredict[score]))
+        print("{0}. {1}".format(counter + 1, scoredict[score][0]))
         counter += 1
 
 
